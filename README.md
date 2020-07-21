@@ -1,5 +1,5 @@
 # Arrowhead Adapter for Azure IoT Hub (Java Spring-Boot)
-##### The project provides an adapter for data coming from Azure IoT Hub through Event Hubs. This project complies with the the Arrowhead Framework 4.1.3.
+##### The project provides an adapter for data coming from Azure IoT Hub through Event Hubs. This project complies with the Arrowhead Framework 4.1.3.
 
 Introduction here...
 
@@ -32,7 +32,7 @@ In order to be able to register your services into a secure Arrowhead Cloud you 
 
 #### application.properties
 
-Modify the properties in accordance with your needs.
+Modify the properties to fit your environment.
 
 Location: `src/main/resources`
 
@@ -44,7 +44,7 @@ Location: `src/main/resources`
 
 ##### *Azure IoT Hub Configuration*
 
-This project assumes that you have already got an IoT Hub resource set up and it is sending its data in JSON format.
+This project assumes that you already have an IoT Hub resource set up and it is sending its data in JSON format.
 
 You can get your configuration properties by opening Azure Shell and typing the following command lines:
 
@@ -61,7 +61,7 @@ az iot hub show --query properties.eventHubEndpoints.events.path --name {your Io
 az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
 ``` 
 
-For further help with setting the IoT Hub configuration properties refer to the following [article](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-live-data-visualization-in-web-apps) 
+For further help with setting the IoT Hub configuration properties refer to the following [article](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-live-data-visualization-in-web-apps). 
 
 ##### *Custom Parameters*
 
@@ -71,9 +71,9 @@ For further help with setting the IoT Hub configuration properties refer to the 
 
 #### Project
 
-In `ProviderConstants.class` add your service constants that you will use in the further parts of the application code.
+In `ProviderConstants.class` add your service constants that you will use in other parts of the application code.
 
-The `ProviderApplicationInitListener.class` initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services)*
+The `ProviderApplicationInitListener.class` initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services.)*
 
 The `IoTHubData.class` represents the data coming from the IoTHub. (In `ProviderApplicationInitListener.class` the incoming JSON is mapped to this class and this will be available globally in the application through the `DataSingleton.class` bean.) Add your variables here in accordance with your data structure. Don't forget to add getters for the variables as well.
 
@@ -81,11 +81,11 @@ Implement your service provider related REST endpoints in `ProviderController.cl
 
 ### Example
 
-Instead of providing an empty skeleton, this project comes with a direct example in implementing an adapter. It assumes a [DHT11](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf) sensor with an ESP32 microcontroller that sends measurement data to the IoTHub in the following format:
+Instead of providing an empty skeleton, this project comes with a direct example implementing an adapter. It assumes a [DHT11](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf) sensor with an ESP32 microcontroller that sends measurement data to the IoTHub in the following format:
 
 ```json
 {"deviceId":"aitia-esp32-1", "messageId":18,"temperature":26.600000, "relative_humidity":62.000000}
 ```
-From the JSON Object above only the `temperature` and `relative_humidity` properties are mapped to a `IoTHubData` object. The provider registers two services, a *temperature* and a `humidity` service. The REST endpoints are implemented that are returning with a response (the actual temperature or humidity) in SenML format. (There is also a custom response DTO class for further example.)
+From the JSON object above only the `temperature` and `relative_humidity` properties are mapped to a `IoTHubData` object. The provider registers two services, a *temperature* and a *humidity* service. The REST endpoints are implemented that are returning with a response (the actual temperature or humidity) in SenML format. (There is also a custom response DTO class for further example.)
 
 If you use the provided `azuretesttemperature.p12` certificate (for demo purposes only) make sure you leave the client system name as *azuretesttemperature*.
