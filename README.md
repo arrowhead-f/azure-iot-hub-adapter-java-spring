@@ -66,3 +66,12 @@ The `IoTHubData.class` represents the data coming from the IoTHub. (In `Provider
 Implement your service provider related REST endpoints in `ProviderController.class`. The `IoTHubData` object is also available here through the `DataSingleton.class` bean. The endpoints can return with a response in SenML format or you can also create your own response format.
 
 ### Example
+
+Instead of providing an empty skeleton, this project comes with a direct example in implementing an adapter. It assumes a [DHT11](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf) sensor with an ESP32 microcontroller that sends measurement data to the IoTHub in the following format:
+
+```json
+{"deviceId":"aitia-esp32-1", "messageId":18,"temperature":26.600000, "relative_humidity":62.000000}
+```
+From the JSON Object above only the `temperature` and `relative_humidity` properties are mapped to a `IoTHubData` object. The provider registers two services, a *temperature* and a `humidity` service. The REST endpoints are implemented that are returning with a response (the actual temperature or humidity) in SenML format.
+
+If you use the provided `azuretesttemperature.p12` certificate (for demo purposes only) make sure you live the client system name as *azuretesttemperature*.
