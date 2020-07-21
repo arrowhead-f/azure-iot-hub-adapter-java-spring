@@ -12,6 +12,20 @@ The project has the following dependencies:
 
 ### Quick Start Guide
 
+#### Compile & Run
+
+Navigate to the project root directory and compile with Maven:
+
+```shell
+$ mvn install
+```
+
+then run the application jar that is created in the `target/` folder:
+
+```shell
+$ java -jar ./target/azure-iot-hub-adapter-4.1.3.7.jar
+```
+
 #### Certificates
 
 In order to be able to register your services into a secure Arrowhead Cloud you need to generate the appropriate certificates. [Create](https://github.com/arrowhead-f/core-java-spring#certificates) your own client certificate or for demo purpose use the provided one (**Note** that the provided one only works for a local cloud since only localhost was added to *Subject Alternative Name*).
@@ -72,6 +86,6 @@ Instead of providing an empty skeleton, this project comes with a direct example
 ```json
 {"deviceId":"aitia-esp32-1", "messageId":18,"temperature":26.600000, "relative_humidity":62.000000}
 ```
-From the JSON Object above only the `temperature` and `relative_humidity` properties are mapped to a `IoTHubData` object. The provider registers two services, a *temperature* and a `humidity` service. The REST endpoints are implemented that are returning with a response (the actual temperature or humidity) in SenML format.
+From the JSON Object above only the `temperature` and `relative_humidity` properties are mapped to a `IoTHubData` object. The provider registers two services, a *temperature* and a `humidity` service. The REST endpoints are implemented that are returning with a response (the actual temperature or humidity) in SenML format. (There is also a custom response DTO class for further example.)
 
-If you use the provided `azuretesttemperature.p12` certificate (for demo purposes only) make sure you live the client system name as *azuretesttemperature*.
+If you use the provided `azuretesttemperature.p12` certificate (for demo purposes only) make sure you leave the client system name as *azuretesttemperature*.
