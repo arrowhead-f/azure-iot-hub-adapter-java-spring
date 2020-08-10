@@ -71,9 +71,9 @@ For further help with setting the IoT Hub configuration properties refer to the 
 
 #### Project
 
-In `ProviderConstants.class` add your service constants that you will use in other parts of the application code.
+In `ProviderConstants` class add your service constants that you will use in other parts of the application code.
 
-The `ProviderApplicationInitListener.class` initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services.)*
+The `ProviderApplicationInitListener` class initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services.)*
 
 The `IoTHubData` class represents the data coming from the IoTHub. (In `ProviderApplicationInitListener` class the incoming JSON is mapped to this class and this will be available globally in the application through the `DataSingleton` bean.) Add your variables here in accordance with your data structure. Don't forget to add getters for the variables as well.
 
