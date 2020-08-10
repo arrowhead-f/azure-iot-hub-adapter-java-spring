@@ -71,13 +71,13 @@ For further help with setting the IoT Hub configuration properties refer to the 
 
 #### Project
 
-In `ProviderConstants.class` add your service constants that you will use in the further parts of the application code.
+In `ProviderConstants` class add your service constants that you will use in the further parts of the application code.
 
-The `ProviderApplicationInitListener.class` initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services)*
+The `ProviderApplicationInitListener` class initializes the Azure Event Hub and registers the services that this client is going to provide. *(**Look for the 'TODO' mark** within this class where you can register your own services)*
 
-The `IoTHubData.class` represents the data coming from the IoTHub. (In `ProviderApplicationInitListener.class` the incoming JSON is mapped to this class and this will be available globally in the application through the `DataSingleton.class` bean.) Add your variables here in accordance with your data structure. Don't forget to add getters for the variables as well.
+The `IoTHubData` class represents the data coming from the IoTHub. (In `ProviderApplicationInitListener` class the incoming JSON is mapped to this class and this will be available globally in the application through the `DataSingleton` bean.) Add your variables here in accordance with your data structure. Don't forget to add getters for the variables as well.
 
-Implement your service provider related REST endpoints in `ProviderController.class`. The `IoTHubData` object is also available here through the `DataSingleton.class` bean. The endpoints can return with a response in SenML format or you can also create your own response format.
+Implement your service provider related REST endpoints in `ProviderController` class. The `IoTHubData` object is also available here through the `DataSingleton` bean. The endpoints can return with a response in SenML format or you can also create your own response format.
 
 ### Example
 
