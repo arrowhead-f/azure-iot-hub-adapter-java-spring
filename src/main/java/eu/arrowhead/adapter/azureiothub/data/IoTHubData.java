@@ -1,4 +1,4 @@
-package eu.arrowhead.adapter.azureiothub.entity;
+package eu.arrowhead.adapter.azureiothub.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,10 +12,10 @@ public class IoTHubData {
     //TODO: add your variables here that are coming from the IoT Hub (JSON Object)
 
     @JsonProperty("temperature") // property name in your incoming JSON Object
-    private Float temperature; // property name in this application code
+    private Double temperature; // property name in this application code
 
     @JsonProperty("relative_humidity") // property name in your incoming JSON Object
-    private Float humidity; // property name in this application code
+    private Double humidity; // property name in this application code
 
     //=================================================================================================
     // methods
@@ -24,6 +24,6 @@ public class IoTHubData {
 
     //TODO: add your getters here
 
-    public Float getTemperature() { return temperature; }
-    public Float getHumidity() { return humidity; }
+    public Double getTemperature() { return temperature; }
+    public Double getHumidity() { return humidity; }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.arrowhead.adapter.azureiothub.configuration.AzureIoTHubConfProperties;
-import eu.arrowhead.adapter.azureiothub.entity.IoTHubData;
+import eu.arrowhead.adapter.azureiothub.data.IoTHubData;
 import eu.arrowhead.common.dto.shared.ServiceRegistryRequestDTO;
 import eu.arrowhead.common.dto.shared.ServiceSecurityType;
 import eu.arrowhead.common.dto.shared.SystemRequestDTO;
@@ -117,12 +117,13 @@ public class ProviderApplicationInitListener extends ApplicationInitListener {
 						dataSingleton.setData(mapper.readValue(partitionEvent.getData().getBodyAsString(), IoTHubData.class));
 					}
 					catch (IOException ex) {
+						logger.error(ex.getMessage(), ex);
 						throw new ArrowheadException(ex.getMessage());
 					}
 				}, ex -> {
-					System.out.println("Error receiving events " + ex);
+					logger.error("Error receiving events: ", ex);
 				}, () -> {
-					System.out.println("Completed receiving events");
+					logger.info("Completed receiving events");
 				});
 
         //TODO: register your services here

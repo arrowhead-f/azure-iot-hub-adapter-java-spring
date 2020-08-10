@@ -5,7 +5,7 @@ import eu.arrowhead.adapter.azureiothub.ProviderConstants;
 import eu.arrowhead.adapter.azureiothub.dto.CustomResponseDTO;
 import eu.arrowhead.adapter.azureiothub.dto.SenMLDTO;
 import eu.arrowhead.adapter.azureiothub.dto.SenMLMeasurementDTO;
-import eu.arrowhead.adapter.azureiothub.entity.IoTHubData;
+import eu.arrowhead.adapter.azureiothub.data.IoTHubData;
 import eu.arrowhead.client.library.util.ClientCommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

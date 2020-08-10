@@ -11,7 +11,7 @@
   },
   {
     "name": "sr_port",
-    "type": "java.lang.String",
+    "type": "java.lang.Integer",
     "description": "A description for 'sr_port'"
   },
   {
