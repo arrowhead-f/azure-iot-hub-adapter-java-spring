@@ -15,7 +15,7 @@ public class CustomResponseDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public CustomResponseDTO(String temperature, String unit) {
+    public CustomResponseDTO(final String temperature, final String unit) {
         this.temperature = temperature;
         this.unit = unit;
     }
@@ -27,7 +27,7 @@ public class CustomResponseDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public void setTemperature(String temperature) { this.temperature = temperature; }
-    public void setUnit(String unit) { this.unit = unit; }
+    public void setTemperature(final String temperature) { this.temperature = temperature; }
+    public void setUnit(final String unit) { this.unit = unit; }
 
 }

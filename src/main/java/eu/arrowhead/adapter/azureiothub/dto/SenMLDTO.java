@@ -20,7 +20,7 @@ public class SenMLDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public SenMLDTO(String bn, String bu, int ver) {
+    public SenMLDTO(final String bn, final String bu, final int ver) {
         this.bn = bn;
         this.t = System.currentTimeMillis() / 1000L; // get unix timestamp
         this.bu = bu;
@@ -38,15 +38,15 @@ public class SenMLDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public void setBn(String bn) { this.bn = bn; }
-    public void setT(Long t) { this.t = t; }
-    public void setBu(String bu) { this.bu = bu; }
-    public void setVer(int ver) { this.ver = ver; }
-    public void setE(List<SenMLMeasurementDTO> e) { this.e = e; }
+    public void setBn(final String bn) { this.bn = bn; }
+    public void setT(final Long t) { this.t = t; }
+    public void setBu(final String bu) { this.bu = bu; }
+    public void setVer(final int ver) { this.ver = ver; }
+    public void setE(final List<SenMLMeasurementDTO> e) { this.e = e; }
 
     //-------------------------------------------------------------------------------------------------
 
-    public boolean addMeasurement(SenMLMeasurementDTO measurement) {
+    public boolean addMeasurement(final SenMLMeasurementDTO measurement) {
         return this.e.add(measurement);
     }
 }

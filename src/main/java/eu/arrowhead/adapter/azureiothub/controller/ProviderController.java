@@ -44,7 +44,7 @@ public class ProviderController {
 	@GetMapping(path = ProviderConstants.TEMPERATURE_URI)
 	@ResponseBody
 	public SenMLDTO getTemperature() { // return temperature measurement data in SenML format
-		SenMLDTO response = new SenMLDTO(systemName, ProviderConstants.TEMPERATURE_UNIT, 1);
+		final SenMLDTO response = new SenMLDTO(systemName, ProviderConstants.TEMPERATURE_UNIT, 1);
 		response.addMeasurement(new SenMLMeasurementDTO(systemName, dataSingleton.getData().getTemperature().toString()));
 		return response;
 	}
@@ -52,7 +52,7 @@ public class ProviderController {
 	@GetMapping(path = ProviderConstants.HUMIDITY_URI)
 	@ResponseBody
 	public SenMLDTO getHumidity() { // return humidity measurement data in SenML format
-		SenMLDTO response = new SenMLDTO(systemName, ProviderConstants.HUMIDITY_UNIT, 1);
+		final SenMLDTO response = new SenMLDTO(systemName, ProviderConstants.HUMIDITY_UNIT, 1);
 		response.addMeasurement(new SenMLMeasurementDTO(systemName, dataSingleton.getData().getHumidity().toString()));
 		return response;
 	}

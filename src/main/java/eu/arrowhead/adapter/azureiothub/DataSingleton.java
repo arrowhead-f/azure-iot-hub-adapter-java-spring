@@ -18,5 +18,5 @@ public class DataSingleton<T> {
 
     //-------------------------------------------------------------------------------------------------
 
-    public void setData(T data) { this.data = data; }
+    public void setData(final T data) { this.data = data; }
 }

@@ -94,7 +94,7 @@ public class ProviderApplicationInitListener extends ApplicationInitListener {
 		}
 
 		// Azure - Build the Event Hubs compatible connection string.
-		String eventHubCompatibleConnectionString = String.format(
+		final String eventHubCompatibleConnectionString = String.format(
 				"Endpoint=%s/;EntityPath=%s;SharedAccessKeyName=%s;SharedAccessKey=%s",
 				iotHubConfig.getEventHubsCompatibleEndpoint(),
 				iotHubConfig.getEventHubsCompatiblePath(),
@@ -103,20 +103,20 @@ public class ProviderApplicationInitListener extends ApplicationInitListener {
 		);
 
 		// Azure - Setup the EventHubBuilder by configuring various options as needed.
-		EventHubClientBuilder eventHubClientBuilder = new EventHubClientBuilder()
+		final EventHubClientBuilder eventHubClientBuilder = new EventHubClientBuilder()
 				.consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
 				.connectionString(eventHubCompatibleConnectionString);
 
 		// Azure - Create an async consumer client as configured in the builder.
-		EventHubConsumerAsyncClient eventHubConsumerAsyncClient = eventHubClientBuilder.buildAsyncConsumerClient();
+		final EventHubConsumerAsyncClient eventHubConsumerAsyncClient = eventHubClientBuilder.buildAsyncConsumerClient();
 		eventHubConsumerAsyncClient
 				.receive(false) // set this to false to read only the newly available events
 				.subscribe(partitionEvent -> {
-					ObjectMapper mapper = new ObjectMapper();
+					final ObjectMapper mapper = new ObjectMapper();
 					try {
 						dataSingleton.setData(mapper.readValue(partitionEvent.getData().getBodyAsString(), IoTHubData.class));
 					}
-					catch (IOException ex) {
+					catch (final IOException ex) {
 						logger.error(ex.getMessage(), ex);
 						throw new ArrowheadException(ex.getMessage());
 					}
@@ -129,7 +129,7 @@ public class ProviderApplicationInitListener extends ApplicationInitListener {
         //TODO: register your services here
 
         //Register services into ServiceRegistry
-        ServiceRegistryRequestDTO temperatureServiceRequest = createServiceRegistryRequest(
+        final ServiceRegistryRequestDTO temperatureServiceRequest = createServiceRegistryRequest(
                 ProviderConstants.TEMPERATURE_SERVICE_DEFINITION,
                 ProviderConstants.TEMPERATURE_URI,
                 HttpMethod.GET
@@ -137,7 +137,7 @@ public class ProviderApplicationInitListener extends ApplicationInitListener {
         temperatureServiceRequest.getMetadata().put(ProviderConstants.MEASUREMENT_UNIT, ProviderConstants.TEMPERATURE_UNIT);
         arrowheadService.forceRegisterServiceToServiceRegistry(temperatureServiceRequest);
 
-        ServiceRegistryRequestDTO humidityServiceRequest = createServiceRegistryRequest(
+        final ServiceRegistryRequestDTO humidityServiceRequest = createServiceRegistryRequest(
                 ProviderConstants.HUMIDITY_SERVICE_DEFINITION,
                 ProviderConstants.HUMIDITY_URI,
                 HttpMethod.GET

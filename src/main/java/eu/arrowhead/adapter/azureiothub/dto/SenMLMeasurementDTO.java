@@ -15,7 +15,7 @@ public class SenMLMeasurementDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public SenMLMeasurementDTO(String n, String sv) {
+    public SenMLMeasurementDTO(final String n, final String sv) {
         this.n = n;
         this.sv = sv;
     }
@@ -27,8 +27,8 @@ public class SenMLMeasurementDTO implements Serializable {
 
     //-------------------------------------------------------------------------------------------------
 
-    public void setN(String n) { this.n = n; }
-    public void setSv(String sv) { this.sv = sv; }
+    public void setN(final String n) { this.n = n; }
+    public void setSv(final String sv) { this.sv = sv; }
 
     //-------------------------------------------------------------------------------------------------
 }
