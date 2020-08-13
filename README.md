@@ -1,8 +1,6 @@
 # Arrowhead Adapter for Azure IoT Hub (Java Spring-Boot)
 ##### The project provides an adapter for data coming from Azure IoT Hub through Event Hubs. This project complies with the Arrowhead Framework 4.1.3.
 
-Introduction here...
-
 ### Requirements
 
 The project has the following dependencies:
